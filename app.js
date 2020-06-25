@@ -1,6 +1,6 @@
 const solve = async (clue, clueType) => {
   var obj = { clue: clue }
-  var response = await fetch('https://prod.remebit.com/' + clueType, {
+  var response = await fetch('https://stage.api.cryptario.net/' + clueType, {
      method: 'post',
      body: JSON.stringify(obj)
   })
@@ -10,6 +10,7 @@ const solve = async (clue, clueType) => {
 
 var app = new Vue({
   el: '#app',
+  vuetify: new Vuetify(),
   data: {
     clue: '',
     progress: 0,
