@@ -1,29 +1,68 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 
-    <title>Cryptario, solving all your cryptic crossword clues!</title>
- </head>
+<head>
+  <script data-ad-client="ca-pub-6071713383850756" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+  <title>Cryptario, solving all your cryptic crossword clues!</title>
+</head>
 
 <body>
   <div id="app">
-       <v-app>
-      <v-main>
-        <v-container>Hello world</v-container>
-        <form>
-          <v-text-field v-model="clue" label="Enter Clue" required> </v-text-field>
-          <v-btn class="mr-4" @click="solveAnagram">Submit</v-btn>
-        </form>
+    <v-main>
+      <v-app>
 
-        {{ anagramSolutions }}
-      </v-main>
+        <!-- top bar-->
+        <v-app-bar color="deep-purple accent-4" dense dark app>
+          <v-toolbar-title>Anagram Solver</v-toolbar-title>
+          <v-spacer></v-spacer>
+        </v-app-bar>
+        <v-container>
+          <!-- explainer -->
+          <div>
+            <p>We solve all your anagrams! Updated daily with new topical words. Try it now!</p>
+          </div>
+
+          <!-- anagram solver form -->
+          <v-card>
+            <v-card-title>Solve Anagram</v-card-title>
+            <v-card-subtitle>Enter the letters to anagram below</v-card-subtitle>
+            <v-card-text>
+              <v-form>
+                <v-text-field v-model="clue" label="Enter Clue" required> </v-text-field>
+                
+              </v-form>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn @click="solveAnagram">Solve</v-btn>
+            </v-card-actions>
+          </v-card>
+
+          <!-- anagram solutions -->
+          <v-card v-if="anagramSolutions.length > 0">
+            <v-card-title>Anagram Solutions</v-card-title>
+            <v-card-text>
+              <v-list>
+                <v-list-item v-for="a in anagramSolutions">{{ a }}</v-list-item>
+              </v-list> 
+            </v-card-text>
+          </v-card>
+
+       
+        </v-container>
+
+
+
+
+
+    </v-main>
     </v-app>
-  </div>   <!-- app --> 
- 
+  </div> <!-- app -->
+
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
   <script src="app.js"></script>

@@ -1,12 +1,12 @@
 const solve = async (clue, clueType) => {
- /* var obj = { clue: clue }
-  var response = await fetch('https://prod.remebit.com/' + clueType, {
+  var obj = { clue: clue }
+  var response = await fetch('https://stage.api.cryptario.net/' + clueType, {
      method: 'post',
      body: JSON.stringify(obj)
   })
-  var solution =  await response.json()*/
-  return ["Taylor Swift"]
-  //return solution
+  var solution =  await response.json()
+  //return ["Taylor Swift"]
+  return solution
 }
 
 var app = new Vue({
