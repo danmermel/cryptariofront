@@ -63,9 +63,15 @@
           </v-card>
 
           <!-- top 50 newly added strings -->
-          <ul>
-            <li v-for="t in newTerms">{{ t }}</li>
-          </ul>       
+          <v-card>
+            <v-card-title>Newly added anagram solutions </v-card-title>
+            <v-card-text>
+              <v-list>
+                <v-list-item v-for="t in newTerms"><a :href="'https://en.wikipedia.org/wiki/' + t.replace(' ','_')" target="_new">{{ t }}</a></v-list-item>
+              </v-list>
+            </v-card-text>
+          </v-card>
+            
         </v-container>
 
 
