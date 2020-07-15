@@ -18,7 +18,8 @@ var app = new Vue({
     solving: false,
     solutions: [],
     anagram: '',
-    anagramSolutions: []
+    anagramSolutions: [],
+    top: top // top 50 newly added strings - from top.js
   },
 
   methods: {
