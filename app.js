@@ -23,12 +23,20 @@ var app = new Vue({
     solutions: [],
     anagram: '',
     anagramSolutions: [],
-    newTerms: newTerms // top 50 newly added strings - from top.js
+    newTerms: newTerms, // top 50 newly added strings - from top.js
+    showResults: false
   },
 
   methods: {
     solveAnagram: async function () {
+      if (this.anagram == "") {
+        return 
+      }
+      this.solving = true
+      this.showResults = false
       this.anagramSolutions = await solve(this.anagram, 'solver')
+      this.solving = false
+      this.showResults = true
     },
 
     analyze: async function () {

@@ -42,24 +42,25 @@
             <v-card-title>Solve Anagram</v-card-title>
             <v-card-subtitle>Enter the letters to anagram below</v-card-subtitle>
             <v-card-text>
-              <v-form>
-                <v-text-field v-model="anagram" label="Enter Clue" required> </v-text-field>
-                
-              </v-form>
+                <v-text-field v-model="anagram" label="Enter Clue" required @keyup.enter="solveAnagram"> </v-text-field>
             </v-card-text>
             <v-card-actions>
-              <v-btn @click="solveAnagram">Solve</v-btn>
+              <v-btn :loading="solving" :disabled="anagram.length===0" @click="solveAnagram">Solve</v-btn>
             </v-card-actions>
           </v-card>
 
           <!-- anagram solutions -->
-          <v-card v-if="anagramSolutions.length > 0">
+          <v-card v-if="anagramSolutions.length > 0 && showResults">
             <v-card-title>Anagram Solutions</v-card-title>
             <v-card-text>
               <v-list>
                 <v-list-item v-for="a in anagramSolutions">{{ a }}</v-list-item>
               </v-list> 
             </v-card-text>
+          </v-card>
+
+          <v-card v-if="anagramSolutions.length === 0 && showResults">
+            <v-card-title>No solutions found</v-card-title>
           </v-card>
 
           <!-- top 50 newly added strings -->
