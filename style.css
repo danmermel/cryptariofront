@@ -1,4 +1,6 @@
-[v-cloak] {
-  display: none;
-}
+[v-cloak] > * { display:none } 
+[v-cloak]::before { content: "Loading..." }
 
+.v-chip.v-size--default{
+  margin: 2px !important;
+}
