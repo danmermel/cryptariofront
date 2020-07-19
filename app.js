@@ -1,6 +1,10 @@
 const solve = async (clue, clueType) => {
   var obj = { clue: clue }
-  var response = await fetch('https://stage.api.cryptario.net/' + clueType, {
+  let url = 'https://prod.api.cryptario.net/'
+  if (window.location.hostname !== 'cryptario.net') {
+    url = 'https://stage.api.cryptario.net/'
+  }
+  var response = await fetch(url + clueType, {
      method: 'post',
      body: JSON.stringify(obj)
   })
