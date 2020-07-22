@@ -71,6 +71,14 @@
               <v-card v-if="anagramSolutions.length === 0 && showResults">
                 <v-card-title>No solutions found</v-card-title>
               </v-card>
+
+              <!-- example anagrams -->
+              <v-card>
+                <v-card-title>Example anagrams</v-card-title>
+                <v-card-text>
+                  <div v-for="anagram in exampleAnagrams"><a :href="'#' + anagram">{{ anagram }}<a/></div>
+                </v-card-text>
+              </v-card> 
             </v-flex>
             <v-flex md4>
               <!-- top 50 newly added strings -->

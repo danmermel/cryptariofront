@@ -13,6 +13,12 @@ const solve = async (clue, clueType) => {
   return solution
 }
 
+// looks for URL changes after the # character
+window.onhashchange = function() {
+  // behave as if the app has just loaded for the first time
+  app.onCreated()
+}
+
 var app = new Vue({
   el: '#app',
   vuetify: new Vuetify(),
@@ -26,12 +32,47 @@ var app = new Vue({
     newTerms: newTerms, // top 50 newly added strings - from top.js
     showResults: false
   },
-
+  // when the app loads
+  created: function () {
+    // call the onCreated method
+    this.onCreated()
+  },
+  computed: {
+    // get only
+    exampleAnagrams: function () {
+      var examples = []
+      for(var i=0; i<5; i++) {
+        var word = this.newTerms[i]
+        var letters = word.split('')
+        var anagram = letters.sort().join('')
+        examples.push(anagram)
+      }
+      return examples
+    }
+  },
   methods: {
+    onCreated: function() {
+      // scroll to top of page
+      window.scrollTo(0, 0)
+      // find the # part of the URL
+      let hash = window.location.hash
+      // remove the hash character
+      hash = hash.replace(/^#/,'')
+      // remove URL encoding
+      hash = decodeURIComponent(hash)
+      console.log(hash)
+      // if there is text after the hash
+      if (hash) {
+        // fill in the form and solve the anagram
+        this.anagram = hash
+        this.solveAnagram()
+      }
+    },
     solveAnagram: async function () {
       if (this.anagram == "") {
         return 
       }
+      window.location.hash = '#'+this.anagram
       this.solving = true
       this.showResults = false
       this.anagramSolutions = await solve(this.anagram, 'solver')
