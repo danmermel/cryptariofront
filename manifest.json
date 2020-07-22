@@ -1,0 +1,14 @@
+{
+  "name": "Cryptario Anagram Solver",
+  "short_name": "Cryptario",
+  "start_url": ".",
+  "display": "browser",
+  "background_color": "#fff",
+  "description": "Solve anagrams using our web-based, mobile-friendly tool with extensive database of solutions. Updated daily with popular content from Wikipedia",
+  "icons": [
+   {
+    "src": "cryptario.png",
+    "sizes": "144x144",
+    "type": "image/png"
+  }]
+}
