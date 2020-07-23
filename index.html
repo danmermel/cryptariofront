@@ -63,7 +63,7 @@
               </v-card>
 
               <!-- anagram solutions -->
-              <v-card v-if="anagramSolutions.length > 0 && showResults"  class="mb-2">
+              <v-card v-if="anagramSolutions.length > 0 && showResults"  class="mb-2" color="#1867C0">
                 <v-card-title>Anagram Solutions</v-card-title>
                 <v-card-text>
                   <v-list>
@@ -87,7 +87,12 @@
               <!-- anagram blurb -->
               <v-card  class="mb-2">
                 <v-card-title>What is an anagram?</v-card-title>
-                <v-card-text>
+                <v-card-text><p>An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once (<a href="https://en.wikipedia.org/wiki/Anagram">Wikipedia</a>).</p> 
+                             <p>Are you an accomplished anagrammatist? We are not! The examples above are topical, but not very clever!</p>
+			     <p>We are using our list of recently added solutions and jumbling up the letters to generate daily fresh examples.</p>
+                             <p>That list is updated daily. We look for popular articles in Wikipedia (based on users' page views) and add the new ones to our database every night.</p>
+			     <p>These are better though: Who gives <a href="#Random advice">Random advice</a>? And who is this guy who claims: <a href="#I'm a jerk but listen">I'm a jerk but listen</a>?
+                             <p>Try our anagram solver with your own clues!</p>
                 </v-card-text>
               </v-card>
             </v-flex>
