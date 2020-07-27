@@ -34,7 +34,7 @@
       <v-app>
 
         <!-- top bar-->
-        <v-app-bar color="deep-purple accent-4" dense dark app>
+        <v-app-bar color="deep-purple darken-4" dense dark app>
           <v-toolbar-title>Anagram Solver</v-toolbar-title>
           <v-spacer></v-spacer>
         </v-app-bar>
@@ -63,7 +63,7 @@
               </v-card>
 
               <!-- anagram solutions -->
-              <v-card v-if="anagramSolutions.length > 0 && showResults"  class="mb-2" color="#1867C0">
+              <v-card v-if="anagramSolutions.length > 0 && showResults"  class="mb-2" color="deep-purple darken-4">
                 <v-card-title>Anagram Solutions</v-card-title>
                 <v-card-text>
                   <v-list>
@@ -89,12 +89,20 @@
                 <v-card-title>What is an anagram?</v-card-title>
                 <v-card-text><p>An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once (<a href="https://en.wikipedia.org/wiki/Anagram">Wikipedia</a>).</p> 
                              <p>Are you an accomplished anagrammatist? We are not! The examples above are topical, but not very clever!</p>
-			     <p>We are using our list of recently added solutions and jumbling up the letters to generate daily fresh examples.</p>
+			                       <p>We are using our list of recently added solutions and jumbling up the letters to generate daily fresh examples.</p>
                              <p>That list is updated daily. We look for popular articles in Wikipedia (based on users' page views) and add the new ones to our database every night.</p>
-			     <p>These are better though: Who gives <a href="#Random advice">Random advice</a>? And who is this guy who claims: <a href="#I'm a jerk but listen">I'm a jerk but listen</a>?
+			                       <p>These are better though: Who gives <a href="#random advice">Random advice</a>? And who is this guy who claims: <a href="#I'm a jerk but listen">I'm a jerk but listen</a>?</p>
+                             <p>And who is <a href="#A flirty swot">a flirty swot</a>?</p>
                              <p>Try our anagram solver with your own clues!</p>
                 </v-card-text>
               </v-card>
+
+              <v-card  class="mb-2">
+                <v-card-title>Need help making your own anagrams?</v-card-title>
+                <v-card-text>
+                  <p>Try this <a href="https://glynnbird.github.io/anagramhelper/">handy tool</a> that helps you build some fancy anagrams to impress your friends!</p>
+                </v-card-text>
+              </v-card> 
             </v-flex>
             <v-flex md4>
               <!-- top 50 newly added strings -->
@@ -109,6 +117,15 @@
             </v-flex>
           </v-layout>
         </v-container>
+        <!-- 
+        <v-footer height="auto" color="deep-purple darken-4" >
+          <v-layout justify-center row wrap>
+            <v-btn  href="about.html" white--text rounded text  large >About</v-btn>
+            <v-btn  href="contact.html" white--text rounded text large>Contact</v-btn>
+            <v-flex  deep-purple accent-2 py-3 text-center white--text xs12> &copy;2020 - <strong>Cryptario</strong> </v-flex>
+          </v-layout>
+        </v-footer>
+        -->
     </v-main>
     </v-app>
   </div> <!-- app -->
