@@ -27,8 +27,7 @@ var app = new Vue({
     progress: 0,
     solving: false,
     solutions: [],
-    anagram: '',
-    anagramSolutions: [],
+    cryptic: '',
     newTerms: newTerms, // top 50 newly added strings - from top.js
     showResults: false
   },
@@ -64,31 +63,24 @@ var app = new Vue({
       // if there is text after the hash
       if (hash) {
         // fill in the form and solve the anagram
-        this.anagram = hash
-        this.solveAnagram()
+        this.cryptic = hash
+        this.solveCryptic()
       }
     },
-    solveAnagram: async function () {
-      if (this.anagram == "") {
-        return 
-      }
+    solveCryptic: async function () {
+      console.log('solveCryptic', this.cryptic)
       if (this.solving) {
         console.log('already solving')
+        return
+      }
+      if (this.cryptic == "") {
         return 
       }
-
-      window.location.hash = '#'+this.anagram
+      window.location.hash = '#'+this.cryptic
       this.solving = true
       this.showResults = false
-      this.anagramSolutions = await solve(this.anagram, 'solver')
-      this.solving = false
-      this.showResults = true
-    },
-
-    analyze: async function () {
       const self = this
       self.solutions = []
-      self.solving = true
       self.progress = 0
       const increment = 100/8
 
@@ -96,11 +88,20 @@ var app = new Vue({
 
      for (var i in clueTypes) {
        var clueType = clueTypes[i]
-       solve(this.clue, clueType).then(function(solutions) {
+       solve(this.cryptic, clueType).then(function(solutions) {
          self.solutions = self.solutions.concat(solutions)
          self.progress += increment
+         console.log('finished', clueType, self.progress, self.showResults)
+         if (self.progress === 100) {
+           self.solving = false
+           self.showResults = true
+         }
        }).catch(function(err) {
          self.progress += increment
+         if (self.progress === 100) {
+           self.solving = false
+           self.showResults = true
+         }
          console.log (clueType, " err ", err)
        })
      }  //end for
