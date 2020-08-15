@@ -1,43 +1,11 @@
-<!doctype html>
-<html lang="en">
+---
+topbar: Cryptario - Cryptic Crosword Solver
+title: Cryptario.net - Crpytic crossword toolkit
+jsapp: cryptic.js
+layout: default
+---
 
-<head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171636633-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
 
-    gtag('config', 'UA-171636633-1');
-  </script>
-
-  <script data-ad-client="ca-pub-6071713383850756" async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-  
-  <title>Cryptario.net - cryptic crossword solver</title>
-  <meta name="description" content="Solve cryptic crossword clues using our web-based, mobile-friendly tool with extensive database of solutions. 
-    Updated daily with popular content from Wikipedia.">
-  <meta name="keywords" content="anagram,solver,solutions,cryptic,crossword,wordplay" />
-  <link rel="manifest" href="/manifest.json">
-</head>
-
-<body>
-  <div id="app" v-cloak>
-    <v-main>
-      <v-app>
-
-        <!-- top bar-->
-        <v-app-bar color="deep-purple darken-4" dense dark app>
-          <v-toolbar-title >Cryptic Solver</v-toolbar-title>
-          <v-spacer></v-spacer>
-        </v-app-bar>
         <v-container grid-list-md>
           <v-layout row wrap>
             <v-flex xs12>
@@ -65,19 +33,13 @@
               <!-- anagram solutions -->
               <h2 v-if="solutions.length > 0">Solutions</h2>
               <v-card v-for="a in solutions" class="mb-2">
-                <v-card-title>{{a.solution}} ({{a.type}})</v-card-title>
-                <v-card-text>
-                  {{a.info}}
-                </v-card-text>
+                <v-card-title v-html="a.solution +' (' + a.type+ ')'"></v-card-title>
+                <v-card-text v-html="a.info"></v-card-text>
               </v-card>
 
               <v-card v-if="solutions.length === 0 && showResults"  class="mb-2">
                 <v-card-title>No solutions found</v-card-title>
               </v-card>
-
-              {{ solutions.length }}
-              {{ showResults }}
-
             </v-flex>
             <v-flex md4>
               <!-- anagram blurb -->
@@ -97,23 +59,3 @@
             </v-flex>
           </v-layout>
         </v-container>
-        <v-footer height="auto" color="deep-purple darken-4" >
-          <v-layout justify-center row wrap>
-            <!-- 
-            <v-btn  href="about.html" white--text rounded text  large >About</v-btn>
-            <v-btn  href="contact.html" white--text rounded text large>Contact</v-btn>
-            -->
-            <v-flex  deep-purple darken-4 py-3 text-center white--text xs12> &copy;2020 - <strong>Cryptario</strong> </v-flex>
-          </v-layout>
-        </v-footer>
-    </v-main>
-    </v-app>
-  </div> <!-- app -->
-
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
-  <script src="top.js"></script>
-  <script src="cryptic.js"></script>
-</body>
-
-</html>
