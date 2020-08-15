@@ -29,7 +29,6 @@ var app = new Vue({
     solutions: [],
     anagram: '',
     anagramSolutions: [],
-    newTerms: newTerms, // top 50 newly added strings - from top.js
     showResults: false
   },
   // when the app loads

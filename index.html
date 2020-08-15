@@ -76,8 +76,9 @@ layout: default
               <v-card>
                 <v-card-title>Newly added anagram solutions </v-card-title>
                 <v-card-text>
-                    <v-chip v-for="t in newTerms" class="ma2" color="green" text-color="white" :href="'https://en.wikipedia.org/wiki/' + t.replace(' ','_')"
-                    target="_new" v-html="t"></v-chip>
+{% for term in site.data.newTerms %}
+  <v-chip class="ma2" color="green" text-color="white" target="_new" href="{{ 'https://en.wikipedia.org/wiki/' | append: term | replace: ' ', '_' }}">{{ term }}</v-chip>
+{% endfor %}
                 </v-card-text>
               </v-card>
             </v-flex>
