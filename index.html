@@ -1,43 +1,10 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171636633-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-171636633-1');
-  </script>
-
-  <script data-ad-client="ca-pub-6071713383850756" async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-  
-  <title>Cryptario.net - anagram solver and cryptic crossword toolkit</title>
-  <meta name="description" content="Solve anagrams using our web-based, mobile-friendly tool with extensive database of solutions. 
-    Updated daily with popular content from Wikipedia.">
-  <meta name="keywords" content="anagram,solver,solutions,crypric,crossword,wordplay" />
-  <link rel="manifest" href="/manifest.json">
-</head>
-
-<body>
-  <div id="app" v-cloak>
-    <v-main>
-      <v-app>
-
-        <!-- top bar-->
-        <v-app-bar color="deep-purple darken-4" dense dark app>
-          <v-toolbar-title >Anagram Solver</v-toolbar-title>
-          <v-spacer></v-spacer>
-        </v-app-bar>
+---
+topbar: Cryptario - Anagram Solver
+title: Cryptario.net - Anagram Solver
+description: Solve anagrams using our web-based, mobile-friendly tool with extensive database of solutions. Updated daily with popular content from Wikipedia.
+jsapp: app.js
+layout: default
+---
         <v-container grid-list-md>
           <v-layout row wrap>
             <v-flex xs12>
@@ -67,7 +34,7 @@
                 <v-card-title>Anagram Solutions</v-card-title>
                 <v-card-text>
                   <v-list>
-                    <v-list-item v-for="a in anagramSolutions">{{ a }}</v-list-item>
+                    <v-list-item v-for="a in anagramSolutions" v-html="a"></v-list-item>
                   </v-list>
                 </v-card-text>
               </v-card>
@@ -80,7 +47,7 @@
               <v-card  class="mb-2">
                 <v-card-title>Example anagrams</v-card-title>
                 <v-card-text>
-                  <div v-for="anagram in exampleAnagrams"><a :href="'#' + anagram">{{ anagram }}</a></div>
+                  <a href="#A%20Flirty%20Swot">A Flirty Swot</a>
                 </v-card-text>
               </v-card> 
 
@@ -109,31 +76,11 @@
               <v-card>
                 <v-card-title>Newly added anagram solutions </v-card-title>
                 <v-card-text>
-                    <v-chip v-for="t in newTerms" class="ma2" color="green" text-color="white" :href="'https://en.wikipedia.org/wiki/' + t.replace(' ','_')"
-                    target="_new">{{ t }}
-                    </v-chip>
+{% for term in site.data.newTerms %}
+  <v-chip class="ma2" color="green" text-color="white" target="_new" href="{{ 'https://en.wikipedia.org/wiki/' | append: term | replace: ' ', '_' }}">{{ term }}</v-chip>
+{% endfor %}
                 </v-card-text>
               </v-card>
             </v-flex>
           </v-layout>
         </v-container>
-        <v-footer height="auto" color="deep-purple darken-4" >
-          <v-layout justify-center row wrap>
-            <!-- 
-            <v-btn  href="about.html" white--text rounded text  large >About</v-btn>
-            <v-btn  href="contact.html" white--text rounded text large>Contact</v-btn>
-            -->
-            <v-flex  deep-purple darken-4 py-3 text-center white--text xs12> &copy;2020 - <strong>Cryptario</strong> </v-flex>
-          </v-layout>
-        </v-footer>
-    </v-main>
-    </v-app>
-  </div> <!-- app -->
-
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
-  <script src="top.js"></script>
-  <script src="app.js"></script>
-</body>
-
-</html>

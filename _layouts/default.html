@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {% include analytics.html %}
+  {% include ads.html %}
+  {% include head.html %}
+</head>
+<body>
+  <div id="app" v-cloak>
+    <v-main>
+      <v-app>
+
+        <!-- top bar-->
+        {% include topbar.html %}
+
+        {{ content }}
+
+        {% include footer.html %}
+         
+    </v-main>
+    </v-app>
+  </div> <!-- app -->
+
+  {% include js.html %}
+  <script src="{{ page.jsapp }}"></script>
+</body>
+
+</html>

@@ -29,26 +29,12 @@ var app = new Vue({
     solutions: [],
     anagram: '',
     anagramSolutions: [],
-    newTerms: newTerms, // top 50 newly added strings - from top.js
     showResults: false
   },
   // when the app loads
   created: function () {
     // call the onCreated method
     this.onCreated()
-  },
-  computed: {
-    // get only
-    exampleAnagrams: function () {
-      var examples = []
-      for(var i=0; i<5; i++) {
-        var word = this.newTerms[i]
-        var letters = word.split('')
-        var anagram = letters.sort().join('')
-        examples.push(anagram)
-      }
-      return examples
-    }
   },
   methods: {
     onCreated: function() {
