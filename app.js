@@ -24,6 +24,7 @@ var app = new Vue({
   vuetify: new Vuetify(),
   data: {
     clue: '',
+    drawer: false,
     progress: 0,
     solving: false,
     solutions: [],
