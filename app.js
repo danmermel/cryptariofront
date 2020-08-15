@@ -36,19 +36,6 @@ var app = new Vue({
     // call the onCreated method
     this.onCreated()
   },
-  computed: {
-    // get only
-    exampleAnagrams: function () {
-      var examples = []
-      for(var i=0; i<5; i++) {
-        var word = this.newTerms[i]
-        var letters = word.split('')
-        var anagram = letters.sort().join('')
-        examples.push(anagram)
-      }
-      return examples
-    }
-  },
   methods: {
     onCreated: function() {
       // scroll to top of page
